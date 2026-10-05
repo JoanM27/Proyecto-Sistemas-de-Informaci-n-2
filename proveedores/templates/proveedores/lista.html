@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Proveedores
+{% endblock %}
+
+{% block content %}
+
+<div style="display:flex; justify-content:space-between; align-items:center;">
+
+    <div>
+        <h1 class="page-title">
+            Proveedores
+        </h1>
+
+        <p class="page-subtitle">
+            Gestiona los proveedores del inventario.
+        </p>
+    </div>
+
+    <a href="{% url 'crear_proveedor' %}"
+       class="btn btn-primary">
+        + Nuevo Proveedor
+    </a>
+
+</div>
+
+
+<div class="table-container">
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>TELÉFONO</th>
+                <th>CORREO</th>
+                <th>DIRECCIÓN</th>
+                <th>OPCIONES</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for proveedor in proveedores %}
+
+            <tr>
+
+                <td>{{ proveedor.idProveedor }}</td>
+
+                <td>{{ proveedor.nombre }}</td>
+
+                <td>{{ proveedor.telefono }}</td>
+
+                <td>{{ proveedor.correo }}</td>
+
+                <td>{{ proveedor.direccion }}</td>
+
+                <td>
+
+                    <a href="{% url 'editar_proveedor' proveedor.idProveedor %}"
+                       class="action-link">
+                        Editar
+                    </a>
+
+                    <a href="{% url 'eliminar_proveedor' proveedor.idProveedor %}"
+                       class="action-link delete-link">
+                        Eliminar
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+                <td colspan="6">
+                    No hay proveedores registrados.
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

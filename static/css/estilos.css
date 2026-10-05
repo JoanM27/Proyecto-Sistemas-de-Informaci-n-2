@@ -1,0 +1,312 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #172033;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 250px;
+    background: #0e1728;
+    color: white;
+    padding: 25px 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    color: #4c91ff;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar nav a {
+    color: #d7deeb;
+    text-decoration: none;
+    padding: 13px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.sidebar nav a:hover {
+    background: #1d2a40;
+    color: white;
+}
+
+.sidebar nav i {
+    margin-right: 9px;
+}
+
+.sidebar-user {
+    margin-top: auto;
+    border-top: 1px solid #29354a;
+    padding-top: 18px;
+    font-size: 13px;
+}
+
+.sidebar-user small {
+    display: block;
+    color: #9aa7bb;
+    margin-top: 5px;
+}
+
+.logout-link {
+    display: inline-block;
+    margin-top: 12px;
+    color: #ff7373;
+    text-decoration: none;
+}
+
+/* CONTENIDO */
+
+.content {
+    flex: 1;
+    padding: 35px;
+}
+
+/* TITULOS */
+
+.page-title {
+    margin: 0;
+    font-size: 28px;
+}
+
+.page-subtitle {
+    color: #788398;
+    margin-top: 5px;
+}
+
+/* TARJETAS */
+
+.card {
+    background: white;
+    border: 1px solid #e0e5ec;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+
+/* BOTONES */
+
+.btn {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 16px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: #216df3;
+    color: white;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-secondary {
+    background: #e9edf2;
+    color: #263247;
+}
+
+/* FORMULARIOS */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #d4dae4;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* TABLAS */
+
+.table-container {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e0e5ec;
+    margin-top: 25px;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #f3f5f8;
+    text-align: left;
+    padding: 14px;
+    font-size: 12px;
+}
+
+td {
+    padding: 14px;
+    border-top: 1px solid #edf0f4;
+    font-size: 13px;
+}
+
+.action-link {
+    color: #216df3;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.delete-link {
+    color: #e74c3c;
+}
+
+/* MENSAJES */
+
+.alert-message {
+    padding: 13px 18px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.alert-message.success {
+    background: #dff7e8;
+    color: #16743c;
+}
+
+.alert-message.error {
+    background: #fde2e2;
+    color: #a52020;
+}
+
+/* DASHBOARD */
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+
+.dashboard-card {
+    background: white;
+    border-radius: 7px;
+    padding: 22px;
+    border: 1px solid #e1e5eb;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, .04);
+}
+
+
+.stock-card {
+    border-left: 3px solid #18b96b;
+}
+
+
+.alert-card {
+    border-left: 3px solid #ef4444;
+}
+
+
+.value-card {
+    border-left: 3px solid #3b82f6;
+}
+
+
+.card-title {
+    color: #687386;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+.card-number {
+    font-size: 27px;
+    font-weight: bold;
+    color: #172033;
+}
+
+
+.card-description {
+    color: #7b8595;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+
+.critical-products {
+    background: white;
+    border: 1px solid #e1e5eb;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+
+.critical-header {
+    padding: 18px 20px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.critical-header h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+
+.critical-header span {
+    color: #e74c3c;
+    font-size: 13px;
+}
+
+
+.critical-products table {
+    margin: 0;
+}
+
+
+.stock-critical {
+    color: #e74c3c;
+    font-weight: bold;
+}

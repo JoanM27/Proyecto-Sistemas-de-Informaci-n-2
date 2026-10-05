@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Panel de Control
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+
+    <div>
+        <h1 class="page-title">
+            Panel de Control (Dashboard)
+        </h1>
+
+        <p class="page-subtitle">
+            Resumen general del inventario.
+        </p>
+    </div>
+
+    <a href="{% url 'registrar_movimiento' %}"
+       class="btn btn-primary">
+
+        + Registrar Movimiento
+
+    </a>
+
+</div>
+
+
+<!-- TARJETAS -->
+
+<div class="dashboard-cards">
+
+    <!-- TOTAL STOCK -->
+
+    <div class="dashboard-card stock-card">
+
+        <div class="card-title">
+            TOTAL PRODUCTOS EN STOCK
+        </div>
+
+        <div class="card-number">
+            {{ total_productos }}
+        </div>
+
+        <div class="card-description">
+            Unidades
+        </div>
+
+    </div>
+
+
+    <!-- ALERTAS -->
+
+    <div class="dashboard-card alert-card">
+
+        <div class="card-title">
+            ALERTAS DE STOCK MÍNIMO
+        </div>
+
+        <div class="card-number">
+            {{ total_alertas }}
+        </div>
+
+        <div class="card-description">
+            Productos críticos
+        </div>
+
+    </div>
+
+
+    <!-- VALOR -->
+
+    <div class="dashboard-card value-card">
+
+        <div class="card-title">
+            VALOR ESTIMADO INVENTARIO
+        </div>
+
+        <div class="card-number">
+            ${{ valor_inventario|floatformat:0 }}
+        </div>
+
+        <div class="card-description">
+            COP
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- PRODUCTOS CRÍTICOS -->
+
+<div class="critical-products">
+
+    <div class="critical-header">
+
+        <h3>
+            ⚠ Productos con Stock Crítico
+        </h3>
+
+        <span>
+            {{ total_alertas }} alertas
+        </span>
+
+    </div>
+
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>
+                    ID PRODUCTO
+                </th>
+
+                <th>
+                    DESCRIPCIÓN
+                </th>
+
+                <th>
+                    STOCK ACTUAL
+                </th>
+
+                <th>
+                    STOCK MÍNIMO
+                </th>
+
+                <th>
+                    PROVEEDOR
+                </th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            {% for producto in productos_criticos %}
+
+            <tr>
+
+                <td>
+                    {{ producto.idProducto }}
+                </td>
+
+                <td>
+                    {{ producto.nombre }}
+                </td>
+
+                <td class="stock-critical">
+                    {{ producto.stock }}
+                </td>
+
+                <td>
+                    {{ producto.stockMinimo }}
+                </td>
+
+                <td>
+                    {{ producto.proveedor|default:"Sin proveedor" }}
+                </td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+
+                <td colspan="5">
+                    No existen productos con stock crítico.
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}  

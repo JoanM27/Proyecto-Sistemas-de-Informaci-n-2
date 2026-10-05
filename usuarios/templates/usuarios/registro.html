@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registro - Sistema de Inventario</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .registro-container {
+            background-color: white;
+            width: 100%;
+            max-width: 420px;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .registro-container h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .registro-container p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .campo {
+            margin-bottom: 18px;
+        }
+
+        .campo label {
+            display: block;
+            margin-bottom: 7px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .campo input {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .campo input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .boton {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .boton:hover {
+            background-color: #0056b3;
+        }
+
+        .mensajes {
+            margin-bottom: 15px;
+        }
+
+        .mensaje {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8d7da;
+            color: #721c24;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="registro-container">
+
+        <h1>Crear cuenta</h1>
+
+        <p>Regístrate en el Sistema de Inventario</p>
+
+        {% if messages %}
+            <div class="mensajes">
+                {% for message in messages %}
+                    <div class="mensaje">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="campo">
+                <label for="usuario">Usuario</label>
+                <input
+                    type="text"
+                    id="usuario"
+                    name="usuario"
+                    placeholder="Ingrese su usuario"
+                    required
+                >
+            </div>
+
+            <div class="campo">
+                <label for="password">Contraseña</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Ingrese su contraseña"
+                    required
+                >
+            </div>
+
+            <div class="campo">
+                <label for="password_confirmacion">
+                    Confirmar contraseña
+                </label>
+
+                <input
+                    type="password"
+                    id="password_confirmacion"
+                    name="password_confirmacion"
+                    placeholder="Repita su contraseña"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="boton">
+                Registrarse
+            </button>
+        </form>
+
+        <div class="login-link">
+            <p>
+                ¿Ya tienes una cuenta?
+                <a href="{% url 'login' %}">Iniciar sesión</a>
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>
